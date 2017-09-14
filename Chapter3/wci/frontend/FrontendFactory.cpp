@@ -11,32 +11,25 @@
 #include "Parser.h"
 #include "Scanner.h"
 #include "Source.h"
-#include "pascal/PascalParserTD.h"
-#include "pascal/PascalScanner.h"
 #include "java/JavaScanner.h"
 #include "java/JavaParserTD.h"
 
 namespace wci { namespace frontend {
 
-using namespace wci::frontend::pascal;
 using namespace wci::frontend::java;
 
 Parser *FrontendFactory::create_parser(string language, string type,
 						               Source *source)
 	throw (string)
 {
-	if ((language == "Pascal") && (type == "top-down"))
+	if ((language == "Java") && (type == "top-down"))
 	{
-		Scanner *scanner = new PascalScanner(source);
-		return new PascalParserTD(scanner);
-	}
-
-	else if ((language == "Java") && (type == "top-down")){
 		Scanner *scanner = new JavaScanner(source);
 		return new JavaParserTD(scanner);
 	}
 
-	else if ((language != "Pascal") || (language != "Java")) {
+
+	else if ((language != "Java")) {
 		throw new string("Parser factory: Invalid language '" +
 						 language + "'");
 	}

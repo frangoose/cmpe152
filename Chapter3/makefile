@@ -4,7 +4,7 @@
 # Copyright (c) 2017 by Ronald Mak
 # For instructional purposes only.  No warranties.
 #
-TARGET = Chapter3cpp
+TARGET = Chapter3
 SRCS = Java.cpp \
        wci/frontend/FrontendFactory.cpp \
        wci/frontend/Parser.cpp \
@@ -21,6 +21,7 @@ SRCS = Java.cpp \
        wci/frontend/java/tokens/JavaSpecialSymbolToken.cpp \
        wci/frontend/java/tokens/JavaStringToken.cpp \
        wci/frontend/java/tokens/JavaWordToken.cpp \
+       wci/frontend/java/tokens/JavaCharacterToken.cpp \
        wci/backend/BackendFactory.cpp \
        wci/backend/Backend.cpp \
        wci/backend/interpreter/Executor.cpp \
