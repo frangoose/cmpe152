@@ -20,7 +20,6 @@ using namespace wci::frontend;
 class JavaParserTD : public Parser
 {
 public:
-
     /**
      * Constructor.
      * @param scanner the scanner to be used with this parser.

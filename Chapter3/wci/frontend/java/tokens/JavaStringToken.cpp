@@ -72,6 +72,7 @@ void JavaStringToken::extract() throw (string)
 
 			else if (current_ch == '\"')
 			{
+				text += "\\";
 				text += "\"";
 				value_str += current_ch; //append the double quotes
 				current_ch = next_char(); //consume the quote
