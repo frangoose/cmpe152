@@ -28,7 +28,7 @@ protected:
 	//extract a java number token from the source
 	void extract() throw (string);
 
-	//extract a pascal number token from the source
+	//extract a java number token from the source
 	void extract_number(string text) throw(string);
 
 private:
@@ -46,7 +46,7 @@ private:
 			string exponentDigits, char exponent_sign);
 };
 
-}}}} //namespace wci::frontend::pascal::tokens
+}}}} //namespace wci::frontend::java::tokens
 
 
 

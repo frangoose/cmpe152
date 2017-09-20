@@ -12,7 +12,9 @@
 #include <map>
 
 namespace wci { namespace frontend { namespace java {
+
 using namespace std;
+
 //Java Error Codes
 
 enum class JavaErrorCode

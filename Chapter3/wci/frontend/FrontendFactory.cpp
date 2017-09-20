@@ -28,7 +28,6 @@ Parser *FrontendFactory::create_parser(string language, string type,
 		return new JavaParserTD(scanner);
 	}
 
-
 	else if ((language != "Java")) {
 		throw new string("Parser factory: Invalid language '" +
 						 language + "'");
