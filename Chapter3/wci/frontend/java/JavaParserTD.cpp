@@ -58,6 +58,12 @@ void JavaParserTD::parse() throw (string)
 			value_str = token->get_value()->s;
 			break;
 		}
+		case JT_CHARACTER:
+		{
+			type_str = "CHAR";
+			value_str = token->get_value()->display();
+			break;
+		}
 		case JT_IDENTIFIER:
 		{
 			type_str = "IDENTIFIER";

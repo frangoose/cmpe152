@@ -19,6 +19,7 @@ using namespace std;
 using namespace wci::frontend;
 
 class JavaErrorHandler{
+
 public:
 	/**
 	* Getter.

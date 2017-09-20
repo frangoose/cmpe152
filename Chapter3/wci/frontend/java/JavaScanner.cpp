@@ -69,13 +69,13 @@ Token *JavaScanner::extract_token() throw (string)
 
 	//if it's a special symbol
 	else if (JavaToken::SPECIAL_SYMBOLS.find(string_ch)
-				!= JavaToken::SPECIAL_SYMBOLS.end())
+				== JavaToken::SPECIAL_SYMBOLS.end())
 	{
 		token = new JavaSpecialSymbolToken(source);
 	}
 	//else it's an error token
 	else
-	{
+	{	//cout << "error token here in scanner" << endl;
 		token = new JavaErrorToken(source, INVALID_CHARACTER, string_ch);
 		next_char(); //consume current character
 	}
@@ -84,41 +84,53 @@ Token *JavaScanner::extract_token() throw (string)
 }
 
 void JavaScanner::skip_white_space() throw(string)
-{
+{ //1
 	char current_ch = current_char();
 
 	while (isspace(current_ch) || (current_ch == '/'))
-	{
+	{ //2
 		//find out if it's a comment
 		if (current_ch == '/')
+		{ //3
 			current_ch = next_char();
-			//single line comment
-			if (current_ch == '/')
-			{
-				do{
-					current_ch = next_char();
-				}while((current_ch != '\n'));
-
-			}
-			//block comment
-			else if (current_ch == '*')
-			{
-				bool n = true;
-				do
+			
+			//it's a comment if this executes
+			if ((current_ch == '/') || (current_ch == '*'))
+			{//4
+				//single line comment
+				if (current_ch == '/')
 				{
-					current_ch = next_char();
-					if(current_ch == '*')
+					do{
+						current_ch = next_char();
+					}while((current_ch != '\n'));
+
+				}
+				//block comment
+				else if (current_ch == '*')
+				{
+					bool n = true;
+					do
 					{
 						current_ch = next_char();
-						if(current_ch == '/'){
-							n = false;
+						if(current_ch == '*')
+						{
+							current_ch = next_char();
+							if(current_ch == '/')
+							{
+								n = false;
+								current_ch = next_char(); //consume character
+							}
 						}
+					}while(n);
 				}
-				}while(n);
-			}
+			}//4
 
-			else current_ch = next_char();
-	}
-}
+		}//3
+		
+		//it's whitespace
+		else current_ch = next_char();
+	} //2
+
+} //1
 
 }}}

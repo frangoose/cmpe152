@@ -46,7 +46,7 @@ void JavaCharacterToken::extract() throw (string)
 	if (isalpha(current_ch))
 	{
 		text += current_ch;
-		value_str += current_ch;
+		value_str = current_ch;
 		current_ch = next_char(); //consume the letter
 	}
 

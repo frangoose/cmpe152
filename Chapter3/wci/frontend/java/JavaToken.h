@@ -41,7 +41,7 @@ enum class JavaTokenType
 	AMP_EQUALS, XOR_EQUALS, EXCLAM_EQUALS, LESS_LESS_EQUALS,
 	GREAT_GREAT_EQUALS, OR, AND, COMMENT, BLOCK_COMMENT_OPEN, BLOCK_COMMENT_CLOSE,
 
-    IDENTIFIER, INTEGER, DOUBLE, STRING,
+    IDENTIFIER, INTEGER, DOUBLE, STRING, CHARA,
     ERROR, END_OF_FILE,
 };
 
@@ -137,7 +137,7 @@ constexpr JavaTokenType JT_IDENTIFIER = JavaTokenType::IDENTIFIER;
 constexpr JavaTokenType JT_INTEGER = JavaTokenType::INTEGER;
 constexpr JavaTokenType JT_DOUBLE = JavaTokenType::DOUBLE;
 constexpr JavaTokenType JT_STRING = JavaTokenType::STRING;
-constexpr JavaTokenType JT_CHARACTER = JavaTokenType::CHAR;
+constexpr JavaTokenType JT_CHARACTER = JavaTokenType::CHARA;
 constexpr JavaTokenType JT_ERROR = JavaTokenType::ERROR;
 constexpr JavaTokenType JT_END_OF_FILE = JavaTokenType::END_OF_FILE;
 

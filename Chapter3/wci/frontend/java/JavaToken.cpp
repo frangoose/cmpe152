@@ -25,11 +25,11 @@ void JavaToken::initialize()
 
 	vector<string> rw_strings =
 	{
-			"ABSTRACT", "DOUBLE", "INT", "LONG", "BREAK", "ELSE", "LONG",
-			"SWITCH", "CASE", "ENUM", "NATIVE", "SUPER", "CHAR", "EXTENDS",
-			"RETURN", "THIS", "CLASS", "FLOAT", "SHORT", "THROW", "CONST",
-			"FOR", "PACKAGE", "VOID", "CONTINUE", "GOTO", "PROTECTED", "VOLATILE",
-			"DO", "IF", "STATIC", "WHILE"
+			"abstract", "double", "int", "long", "break", "else", "long",
+			"switch", "case", "enum", "native", "super", "char", "extends",
+			"return", "this", "class", "float", "short", "throw", "const",
+			"for", "package", "void", "continue", "goto", "protected", "volatile",
+			"do", "if", "static", "while"
 	};
 
 	vector<JavaTokenType> rw_keys =
@@ -85,7 +85,7 @@ void JavaToken::initialize()
 
     vector<JavaTokenType> ss_keys =
     {
-    		JavaTokenType::TILDE,
+    			JavaTokenType::TILDE,
 			JavaTokenType::EXCLAMATION,
 			JavaTokenType::AT,
 			JavaTokenType::MOD,
