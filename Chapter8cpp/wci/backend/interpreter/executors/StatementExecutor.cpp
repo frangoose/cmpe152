@@ -12,6 +12,7 @@
 #include "LoopExecutor.h"
 #include "IfExecutor.h"
 #include "SelectExecutor.h"
+#include "WhenExecutor.h"
 #include "../Executor.h"
 #include "../RuntimeError.h"
 #include "../../../DataValue.h"

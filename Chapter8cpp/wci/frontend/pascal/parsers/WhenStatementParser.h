@@ -44,7 +44,7 @@ private:
   //helper function for parse_statement which parses a
   //when branch
   ICodeNode *parse_branch(Token *token) throw(string);
- }
+};
 
 }}}} //namespace wci::frontend::pascal::parsers
 

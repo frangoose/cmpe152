@@ -98,11 +98,16 @@ ICodeNode *WhenStatementParser::parse_statement(Token *token) throw (string)
         error_handler.flag(token, MISSING_RIGHT_ARROW, this);
       }
 
+      //create an OTHERWISE node
+      ICodeNode *otherwise_node =
+                ICodeFactory::create_icode_node((ICodeNodeType) NT_OTHERWISE);
+
       //just need to parse assignment statement now
       StatementParser statementParser(this);
       //the statement subtree is added as the last child of the
       //when_node
-      when_node->add_child(statementParser.parse_statement(token));
+      otherwise_node->add_child(statementParser.parse_statement(token));
+      when_node->add_child(otherwise_node);
 
     }
     else{
@@ -149,5 +154,5 @@ ICodeNode *WhenStatementParser::parse_branch(Token *token) throw (string)
   branch_node->add_child(statementParser.parse_statement(token));
 
   return branch_node;
-
+}
 }}}}
