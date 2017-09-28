@@ -52,6 +52,7 @@ DataValue *WhenExecutor::execute(ICodeNode *node)
     ICodeNode *otherwise_node = children[size_when-1];
 
     //executing the statement node of otherwise
+    StatementExecutor statement_executor(this);
     ICodeNode *statement_node = otherwise_node->get_children()[0];
     statement_executor.execute(statement_node);
     }
