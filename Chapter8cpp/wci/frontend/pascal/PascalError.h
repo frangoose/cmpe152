@@ -65,6 +65,8 @@ enum class PascalErrorCode
     MISSING_TO_DOWNTO,
     MISSING_UNTIL,
     MISSING_VARIABLE,
+    MISSING_RIGHT_ARROW,
+    MISSING_OTHERWISE,
     NOT_CONSTANT_IDENTIFIER,
     NOT_RECORD_VARIABLE,
     NOT_TYPE_IDENTIFIER,
@@ -128,6 +130,8 @@ constexpr PascalErrorCode MISSING_THEN = PascalErrorCode::MISSING_THEN;
 constexpr PascalErrorCode MISSING_TO_DOWNTO = PascalErrorCode::MISSING_TO_DOWNTO;
 constexpr PascalErrorCode MISSING_UNTIL = PascalErrorCode::MISSING_UNTIL;
 constexpr PascalErrorCode MISSING_VARIABLE = PascalErrorCode::MISSING_VARIABLE;
+constexpr PascalErrorCode MISSING_RIGHT_ARROW = PascalErrorCode::MISSING_RIGHT_ARROW;
+constexpr PascalErrorCode MISSING_OTHERWISE = PascalErrorCode::MISSING_OTHERWISE;
 constexpr PascalErrorCode NOT_CONSTANT_IDENTIFIER = PascalErrorCode::NOT_CONSTANT_IDENTIFIER;
 constexpr PascalErrorCode NOT_RECORD_VARIABLE = PascalErrorCode::NOT_RECORD_VARIABLE;
 constexpr PascalErrorCode NOT_TYPE_IDENTIFIER = PascalErrorCode::NOT_TYPE_IDENTIFIER;

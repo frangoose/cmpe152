@@ -44,6 +44,9 @@ void ICodeNodeImpl::initialize()
         NT_SELECT_BRANCH,
         NT_SELECT_CONSTANTS,
         NT_NO_OP,
+        NT_WHEN,
+        NT_OTHERWISE,
+        NT_WHEN_BRANCH,
 
         // Relational operators
         NT_EQ,
@@ -88,6 +91,7 @@ void ICodeNodeImpl::initialize()
         // Statements
         "COMPOUND", "ASSIGN", "LOOP", "TEST", "CALL", "PARAMETERS",
         "IF", "SELECT", "SELECT_BRANCH", "SELECT_CONSTANTS", "NO_OP",
+        "WHEN", "OTHERWISE", "WHEN_BRANCH",
 
         // Relational operators
         "EQ", "NE", "LT", "LE", "GT", "GE", "NOT",
