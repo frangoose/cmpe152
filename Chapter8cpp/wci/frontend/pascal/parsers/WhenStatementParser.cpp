@@ -1,6 +1,7 @@
 #include <string>
 #include <set>
 #include "WhenStatementParser.h"
+#include "StatementParser.h"
 #include "AssignmentStatementParser.h"
 #include "ExpressionParser.h"
 #include "../PascalParserTD.h"
@@ -123,6 +124,8 @@ ICodeNode *WhenStatementParser::parse_statement(Token *token) throw (string)
     {
       error_handler.flag(token, MISSING_END, this);
     }
+
+    return when_node;
 }
 
 ICodeNode *WhenStatementParser::parse_branch(Token *token) throw (string)

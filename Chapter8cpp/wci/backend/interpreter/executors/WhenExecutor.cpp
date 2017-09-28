@@ -40,6 +40,18 @@ DataValue *WhenExecutor::execute(ICodeNode *node)
           ExpressionExecutor expression_executor(this);
           StatementExecutor statement_executor(this);
 
+          ICodeNode *expr_node = when_branch->get_children()[0];
+          ICodeNode *statement_node = when_branch->get_children()[1];
+
+          DataValue *data_value = expression_executor.execute(expr_node);
+          //if expression was true than execute the statement and
+          //set when_test to false so we don't execute the
+          //otherwise node
+          if(data_value->b)
+          {
+            statement_executor.execute(statement_node);
+            when_test = false;
+          }
           current++; //increment current
     }
 
@@ -56,6 +68,9 @@ DataValue *WhenExecutor::execute(ICodeNode *node)
     ICodeNode *statement_node = otherwise_node->get_children()[0];
     statement_executor.execute(statement_node);
     }
+
+    ++execution_count; //count the WHEN statement itself
+    return nullptr;
 }
 
 }}}}
