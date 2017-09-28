@@ -73,6 +73,12 @@ DataValue *StatementExecutor::execute(ICodeNode *node)
             return select_executor.execute(node);
         }
 
+        case NT_WHEN:
+        {
+            WhenExecutor when_executor(this);
+            return when_executor.execute(node);
+        }
+
         case NT_NO_OP: return nullptr;
 
         default:
