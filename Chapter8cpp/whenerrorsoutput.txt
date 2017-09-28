@@ -1,0 +1,29 @@
+./Chapter8cpp execute -ix whenerrors.txt
+001 BEGIN
+002     WHEN
+003         i := 3 => k > 5;
+            ^
+*** Undefined identifier [at "i"]
+              ^
+*** Unexpected token [at ":="]
+                        ^
+*** Unexpected token [at ">"]
+                          ^
+*** Missing := [at "5"]
+004         m = n  :  m := 2*n;
+            ^
+*** Undefined identifier [at "m"]
+                ^
+*** Undefined identifier [at "n"]
+                   ^
+*** Unexpected token [at ":"]
+                      ^
+*** Missing right arrow [at "m"]
+005     END;
+        ^
+*** Missing otherwise [at "END"]
+006 END.
+
+                   6 source lines.
+                   9 syntax errors.
+                0.00 seconds total parsing time.
