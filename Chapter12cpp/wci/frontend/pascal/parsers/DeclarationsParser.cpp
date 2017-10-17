@@ -73,7 +73,7 @@ SymTabEntry *DeclarationsParser::parse_declaration(Token *token,
 
     token = synchronize(TYPE_START_SET);
 
-    if (token->get_type() == (TokenType) PT_TYPE)
+    if (token->get_type() == (TokenType) PT_TYPE) //Not sure if start parsing here - Nick F.
     {
         token = next_token(token);  // consume TYPE
 
@@ -83,7 +83,7 @@ SymTabEntry *DeclarationsParser::parse_declaration(Token *token,
 
     token = synchronize(VAR_START_SET);
 
-    if (token->get_type() == (TokenType) PT_VAR)
+    if (token->get_type() == (TokenType) PT_VAR) //Or here - Nick F.
     {
         token = next_token(token);  // consume VAR
 
