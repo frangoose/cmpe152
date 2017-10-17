@@ -102,6 +102,13 @@ void Predefined::initialize_types(SymTabStack *symtab_stack)
     char_id->set_definition((Definition) DF_TYPE);
     char_id->set_typespec(char_type);
 
+    // Type complex.
+    char_id = symtab_stack->enter_local("complex");
+    char_type = TypeFactory::create_type((TypeForm) TF_SCALAR);
+    char_type->set_identifier(complex_id);
+    char_id->set_definition((Definition) DF_TYPE);
+    char_id->set_typespec(complex_type);
+
     // Undefined type.
     undefined_type = TypeFactory::create_type((TypeForm) TF_SCALAR);
 }
