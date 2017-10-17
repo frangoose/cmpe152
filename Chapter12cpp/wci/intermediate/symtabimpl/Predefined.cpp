@@ -31,6 +31,7 @@ TypeSpec *Predefined::real_type;
 TypeSpec *Predefined::boolean_type;
 TypeSpec *Predefined::char_type;
 TypeSpec *Predefined::undefined_type;
+TypeSpec *Predefined::complex_type;
 
 // Predefined identifiers.
 SymTabEntry *Predefined::integer_id;
@@ -60,6 +61,7 @@ SymTabEntry *Predefined::sqr_id;
 SymTabEntry *Predefined::sqrt_id;
 SymTabEntry *Predefined::succ_id;
 SymTabEntry *Predefined::trunc_id;
+SymTabEntry *Predefined::complex_id;
 
 void Predefined::initialize(SymTabStack *symtab_stack)
 {
