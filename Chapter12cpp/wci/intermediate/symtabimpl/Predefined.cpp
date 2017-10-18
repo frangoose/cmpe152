@@ -109,12 +109,12 @@ void Predefined::initialize_types(SymTabStack *symtab_stack)
     complex_id = symtab_stack->enter_local("complex");
     complex_type = TypeFactory::create_type((TypeForm) TF_RECORD);
     //creating symbol table
-    SymTabImpl *table = SymTabFactory::create_symtab(0);
-    SymTabEntryImpl *re = table->enter("re");
-    SymTabEntryImpl *im = table->enter("im");
+    SymTab *table = SymTabFactory::create_symtab(0);
+    SymTabEntry *re = table->enter("re");
+    SymTabEntry *im = table->enter("im");
     re->set_typespec(real_type);
     im->set_typespec(real_type);
-    TypeValue table_value = new TypeValue(table);
+    TypeValue *table_value = new TypeValue(table);
     complex_type->set_attribute(TypeKeyImpl::RECORD_SYMTAB, table_value);
     complex_type->set_identifier(complex_id);
     complex_id->set_definition((Definition) DF_TYPE);
