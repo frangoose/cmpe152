@@ -32,7 +32,6 @@ TypeSpec *Predefined::boolean_type;
 TypeSpec *Predefined::char_type;
 TypeSpec *Predefined::complex_type;
 TypeSpec *Predefined::undefined_type;
-TypeSpec *Predefined::complex_type;
 
 // Predefined identifiers.
 SymTabEntry *Predefined::integer_id;
@@ -63,7 +62,6 @@ SymTabEntry *Predefined::sqr_id;
 SymTabEntry *Predefined::sqrt_id;
 SymTabEntry *Predefined::succ_id;
 SymTabEntry *Predefined::trunc_id;
-SymTabEntry *Predefined::complex_id;
 
 void Predefined::initialize(SymTabStack *symtab_stack)
 {
@@ -106,7 +104,6 @@ void Predefined::initialize_types(SymTabStack *symtab_stack)
     char_id->set_definition((Definition) DF_TYPE);
     char_id->set_typespec(char_type);
 
-<<<<<<< HEAD
     //Type complex.
     complex_id = symtab_stack->enter_local("complex");
     complex_type = TypeFactory::create_type((TypeForm) TF_RECORD);
@@ -116,14 +113,12 @@ void Predefined::initialize_types(SymTabStack *symtab_stack)
     complex_type->set_identifier(complex_id);
     complex_id->set_definition((Definition) DF_TYPE);
     complex_id->set_typespec(complex_type);
-=======
     // Type complex.
     char_id = symtab_stack->enter_local("complex");
     char_type = TypeFactory::create_type((TypeForm) TF_SCALAR);
     char_type->set_identifier(complex_id);
     char_id->set_definition((Definition) DF_TYPE);
     char_id->set_typespec(complex_type);
->>>>>>> 80222e89d4bf4b298ae67f0ebb3622e8c129d03e
 
     // Undefined type.
     undefined_type = TypeFactory::create_type((TypeForm) TF_SCALAR);
