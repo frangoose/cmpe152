@@ -14,6 +14,7 @@
 #include "../TypeFactory.h"
 #include "../SymTabEntry.h"
 #include "../SymTabStack.h"
+#include "../SymTabFactory.h"
 #include "../typeimpl/TypeSpecImpl.h"
 #include "../../DataValue.h"
 
@@ -107,9 +108,14 @@ void Predefined::initialize_types(SymTabStack *symtab_stack)
     //Type complex.
     complex_id = symtab_stack->enter_local("complex");
     complex_type = TypeFactory::create_type((TypeForm) TF_RECORD);
-    //create symbol table here
-    //create two fields that go inside that symbol table re and im
-    //hard code in
+    //creating symbol table
+    SymTabImpl *table = SymTabFactory::create_symtab(0);
+    SymTabEntryImpl *re = table->enter("re");
+    SymTabEntryImpl *im = table->enter("im");
+    re->set_typespec(real_type);
+    im->set_typespec(real_type);
+    TypeValue table_value = new TypeValue(table);
+    complex_type->set_attribute(TypeKeyImpl::RECORD_SYMTAB, table_value);
     complex_type->set_identifier(complex_id);
     complex_id->set_definition((Definition) DF_TYPE);
     complex_id->set_typespec(complex_type);
