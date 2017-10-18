@@ -115,7 +115,7 @@ void Predefined::initialize_types(SymTabStack *symtab_stack)
     re->set_typespec(real_type);
     im->set_typespec(real_type);
     TypeValue *table_value = new TypeValue(table);
-    complex_type->set_attribute(TypeKeyImpl::RECORD_SYMTAB, table_value);
+    complex_type->set_attribute((TypeKey) RECORD_SYMTAB, table_value);
     complex_type->set_identifier(complex_id);
     complex_id->set_definition((Definition) DF_TYPE);
     complex_id->set_typespec(complex_type);
