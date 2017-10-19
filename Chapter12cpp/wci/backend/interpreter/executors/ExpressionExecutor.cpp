@@ -426,7 +426,7 @@ CellValue *ExpressionExecutor::execute_binary_operator(
         {
             //retrieving the values
             TypeValue *value1 = typespec1->get_attribute((TypeKey) RECORD_SYMTAB);
-            TypeValue *value2 = typespec1->get_attribute((TypeKey) RECORD_SYMTAB);
+            TypeValue *value2 = typespec2->get_attribute((TypeKey) RECORD_SYMTAB);
 
             //getting the symbol tables
             SymTab *table1 = value1->symtab;
@@ -434,6 +434,8 @@ CellValue *ExpressionExecutor::execute_binary_operator(
 
             SymTabEntry *re1 = table1->lookup("re");
             SymTabEntry *im1 = table1->lookup("im");
+            SymTabEntry *re2 = table2->lookup("re");
+            SymTabEntry *im2 = table2->lookup("im");
 
             //how do I retrieve the value from
             //the SymTabEntry object?
@@ -441,8 +443,13 @@ CellValue *ExpressionExecutor::execute_binary_operator(
             //SymTab object and then retrieve the DataValue
             //from that. Finally retrieve the float associated
             //with that DataValue
-            //EntryValue *val = re1->get_attribute();
+            EntryValue *val_re1 = re1->get_attribute((SymTabKey) DATA_VALUE);
+            EntryValue *val_im1 = im1->get_attribute((SymTabKey) DATA_VALUE);
+            EntryValue *val_re2 = re2->get_attribute((SymTabKey) DATA_VALUE);
+            EntryValue *val_im2 = im2->get_attribute((SymTabKey) DATA_VALUE);
 
+
+            
             switch (node_type)
             {
                 case NT_ADD:
