@@ -308,20 +308,20 @@ CellValue *ExpressionExecutor::execute_binary_operator(
     bool integer_mode = false;
     bool character_mode = false;
     bool string_mode = false;
-    //bool complex_mode = false;
+    bool complex_mode = false;
 
     if (   (typespec1 == Predefined::integer_type)
         && (typespec2 == Predefined::integer_type))
     {
         integer_mode = true;
     }
-    /*
+
     else if ((typespec1 == Predefined::complex_type)
           && (typespec2 == Predefined::complex_type))
     {
         complex_mode = true;
     }
-    */
+
     else if (   (   (typespec1 == Predefined::char_type)
                  || (   (operand1->type == STRING)
                      && (operand1->s.length() == 1)))
@@ -421,14 +421,27 @@ CellValue *ExpressionExecutor::execute_binary_operator(
                 default: result_cell_value = nullptr;  // shouldn't get here
             }
         }
-        /*
+
         else if (complex_mode)
         {
-            //storing the re and im of complex numbers in float variables
-            //float value1_re = operand1->re; //has no operator re and im
-            //float value1_im = operand1->im;
-            //float value2_re = operand2->re;
-            //float value2_im = operand2->im;
+            //retrieving the values
+            TypeValue *value1 = typespec1->get_attribute((TypeKey) RECORD_SYMTAB);
+            TypeValue *value2 = typespec1->get_attribute((TypeKey) RECORD_SYMTAB);
+
+            //getting the symbol tables
+            SymTab *table1 = value1->symtab;
+            SymTab *table2 = value2->symtab;
+
+            SymTabEntry *re1 = table1->lookup("re");
+            SymTabEntry *im1 = table1->lookup("im");
+
+            //how do I retrieve the value from
+            //the SymTabEntry object?
+            //I believe I need to get the EntryValue from
+            //SymTab object and then retrieve the DataValue
+            //from that. Finally retrieve the float associated
+            //with that DataValue
+            //EntryValue *val = re1->get_attribute();
 
             switch (node_type)
             {
@@ -445,7 +458,7 @@ CellValue *ExpressionExecutor::execute_binary_operator(
                 default: result_cell_value = nullptr; //shouldn't get here
             }
         }
-        */
+
         else
         {
             float value1 = operand1->type == INTEGER ? operand1->i
