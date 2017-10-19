@@ -424,6 +424,7 @@ CellValue *ExpressionExecutor::execute_binary_operator(
 
         else if (complex_mode)
         {
+            /*
             //retrieving the values
             TypeValue *value1 = typespec1->get_attribute((TypeKey) RECORD_SYMTAB);
             TypeValue *value2 = typespec2->get_attribute((TypeKey) RECORD_SYMTAB);
@@ -457,10 +458,47 @@ CellValue *ExpressionExecutor::execute_binary_operator(
             float true_im1 = dval_im1->f;
             float true_re2 = dval_re2->f;
             float true_im2 = dval_im2->f;
+            */
+
+            MemoryMap *map1 = cell_value1->memory_map;
+            MemoryMap *map2 = cell_value2->memory_map;
+
+            Cell *cell_re_1 = map1->get_cell("re");
+            Cell *cell_im_1 = map1->get_cell("im");
+            Cell *cell_re_2 = map2->get_cell("re");
+            Cell *cell_im_2 = map2->get_cell("im");
+
+            CellValue *cellValue_re_1 = cell_re_1->get_value();
+            CellValue *cellValue_im_1 = cell_im_1->get_value();
+            CellValue *cellValue_re_2 = cell_re_2->get_value();
+            CellValue *cellValue_im_2 = cell_im_2->get_value();
+
+            DataValue *dvalue_re_1 = cellValue_re_1->value;
+            DataValue *dvalue_im_1 = cellValue_im_1->value;
+            DataValue *dvalue_re_2 = cellValue_re_2->value;
+            DataValue *dvalue_im_2 = cellValue_im_2->value;
+
+            float true_re1 = dvalue_re_1->f;
+            float true_im1 = dvalue_im_1->f;
+            float true_re2 = dvalue_re_2->f;
+            float true_im2 = dvalue_im_2->f;
+
+            MemoryMap *sum_map = new MemoryMap; //error
+
 
             switch (node_type)
             {
                 case NT_ADD:
+                  float sum_re = true_re1 + true_re2;
+                  float sum_im = true_im1 + true_im2;
+                  DataValue *dsum_re = new DataValue(sum_re);
+                  DataValue *dsum_im = new DataValue(sum_im);
+                  CellValue *csum_re = new CellValue(dsum_re);
+                  CellValue *csum_im = new CellValue(dsum_im);
+                  Cell *cell_sum_re = new Cell(csum_re); //error
+                  Cell *cell_sum_im = new Cell(csum_im); //error
+
+
                   break;
                 case NT_SUBTRACT:
                   break;
