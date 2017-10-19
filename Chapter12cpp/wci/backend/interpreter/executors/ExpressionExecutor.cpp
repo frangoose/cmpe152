@@ -308,12 +308,20 @@ CellValue *ExpressionExecutor::execute_binary_operator(
     bool integer_mode = false;
     bool character_mode = false;
     bool string_mode = false;
+    //bool complex_mode = false;
 
     if (   (typespec1 == Predefined::integer_type)
         && (typespec2 == Predefined::integer_type))
     {
         integer_mode = true;
     }
+    /*
+    else if ((typespec1 == Predefined::complex_type)
+          && (typespec2 == Predefined::complex_type))
+    {
+        complex_mode = true;
+    }
+    */
     else if (   (   (typespec1 == Predefined::char_type)
                  || (   (operand1->type == STRING)
                      && (operand1->s.length() == 1)))
@@ -413,6 +421,31 @@ CellValue *ExpressionExecutor::execute_binary_operator(
                 default: result_cell_value = nullptr;  // shouldn't get here
             }
         }
+        /*
+        else if (complex_mode)
+        {
+            //storing the re and im of complex numbers in float variables
+            //float value1_re = operand1->re; //has no operator re and im
+            //float value1_im = operand1->im;
+            //float value2_re = operand2->re;
+            //float value2_im = operand2->im;
+
+            switch (node_type)
+            {
+                case NT_ADD:
+                  break;
+                case NT_SUBTRACT:
+                  break;
+                case NT_MULTIPLY:
+                  break;
+                case NT_FLOAT_DIVIDE:
+                  break;
+                case NT_INTEGER_DIVIDE:
+                  break;
+                default: result_cell_value = nullptr; //shouldn't get here
+            }
+        }
+        */
         else
         {
             float value1 = operand1->type == INTEGER ? operand1->i
