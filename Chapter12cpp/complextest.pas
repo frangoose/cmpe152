@@ -11,11 +11,5 @@ BEGIN
   y.im := 5;
 
   z := x + y;
-  z := x - y;
-  z := x * y;
-  z := x / y;
 
-  a := 5;
-  b := 10;
-  c := a + b;
 END.

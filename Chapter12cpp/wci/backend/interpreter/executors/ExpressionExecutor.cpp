@@ -448,8 +448,16 @@ CellValue *ExpressionExecutor::execute_binary_operator(
             EntryValue *val_re2 = re2->get_attribute((SymTabKey) DATA_VALUE);
             EntryValue *val_im2 = im2->get_attribute((SymTabKey) DATA_VALUE);
 
+            DataValue *dval_re1 = val_re1->value;
+            DataValue *dval_im1 = val_im1->value;
+            DataValue *dval_re2 = val_re2->value;
+            DataValue *dval_im2 = val_im2->value;
 
-            
+            float true_re1 = dval_re1->f;
+            float true_im1 = dval_im1->f;
+            float true_re2 = dval_re2->f;
+            float true_im2 = dval_im2->f;
+
             switch (node_type)
             {
                 case NT_ADD:
