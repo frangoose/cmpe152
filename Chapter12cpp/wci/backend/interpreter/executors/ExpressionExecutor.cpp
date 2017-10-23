@@ -24,6 +24,7 @@
 #include "../../../backend/BackendFactory.h"
 #include "../../../backend/interpreter/memoryimpl/MemoryMapImpl.h"
 #include "../../../message/Message.h"
+#include "../../../backend/interpreter/memoryimpl/CellImpl.h"
 
 namespace wci { namespace backend { namespace interpreter { namespace executors {
 
@@ -460,6 +461,8 @@ CellValue *ExpressionExecutor::execute_binary_operator(
             float true_im2 = dval_im2->f;
             */
 
+
+            //this is where we actually start working
             MemoryMap *map1 = cell_value1->memory_map;
             MemoryMap *map2 = cell_value2->memory_map;
 
@@ -483,35 +486,47 @@ CellValue *ExpressionExecutor::execute_binary_operator(
             float true_re2 = dvalue_re_2->f;
             float true_im2 = dvalue_im_2->f;
 
-            MemoryMap *sum_map = new MemoryMap; //error
+            MemoryMapImpl *sum_map = new MemoryMapImpl; //changed to Impl
 
 
             switch (node_type)
             {
                 case NT_ADD:
-                  float sum_re = true_re1 + true_re2;
-                  float sum_im = true_im1 + true_im2;
-                  DataValue *dsum_re = new DataValue(sum_re);
-                  DataValue *dsum_im = new DataValue(sum_im);
-                  CellValue *csum_re = new CellValue(dsum_re);
-                  CellValue *csum_im = new CellValue(dsum_im);
-                  Cell *cell_sum_re = new Cell(csum_re); //error
-                  Cell *cell_sum_im = new Cell(csum_im); //error
+                {
+                    float sum_re = true_re1 + true_re2;
+                    float sum_im = true_im1 + true_im2;
+                    //DataValue *dsum_re = new DataValue(sum_re);
+                    //DataValue *dsum_im = new DataValue(sum_im);
+                    CellValue *csum_re = new CellValue(sum_re);
+                    CellValue *csum_im = new CellValue(sum_im);
+                    CellImpl *cell_sum_re = new CellImpl(csum_re); //changed to Impl
+                    CellImpl *cell_sum_im = new CellImpl(csum_im); //changed to Impl
+                    //we need to make these cells point go into
+                    //a memory map and then make result_cell_value
+                    //point to the memory map and return it
 
-
-                  break;
+                    break;
+                }
                 case NT_SUBTRACT:
-                  break;
+                {
+                    break;
+                }
                 case NT_MULTIPLY:
-                  break;
+                {
+                    break;
+                }
                 case NT_FLOAT_DIVIDE:
-                  break;
+                {
+                    break;
+                }
                 case NT_INTEGER_DIVIDE:
-                  break;
+                {
+                    break;
+                }
                 default: result_cell_value = nullptr; //shouldn't get here
             }
-        }
 
+        }
         else
         {
             float value1 = operand1->type == INTEGER ? operand1->i
