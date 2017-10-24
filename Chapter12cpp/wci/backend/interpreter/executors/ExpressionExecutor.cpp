@@ -485,7 +485,7 @@ CellValue *ExpressionExecutor::execute_binary_operator(
             float true_im1 = dvalue_im_1->f;
             float true_re2 = dvalue_re_2->f;
             float true_im2 = dvalue_im_2->f;
-
+            cout << endl << "true_re1" << true_re1 << endl;
             MemoryMapImpl *sum_map = new MemoryMapImpl; //changed to Impl
 
 
@@ -493,6 +493,7 @@ CellValue *ExpressionExecutor::execute_binary_operator(
             {
                 case NT_ADD:
                 {
+                  /*
                     float sum_re = true_re1 + true_re2;
                     float sum_im = true_im1 + true_im2;
                     //DataValue *dsum_re = new DataValue(sum_re);
@@ -504,23 +505,34 @@ CellValue *ExpressionExecutor::execute_binary_operator(
                     //we need to make these cells point go into
                     //a memory map and then make result_cell_value
                     //point to the memory map and return it
+                    sum_map->contents.insert("re", cell_sum_re);
+                    sum_map->contents.insert("im", cell_sum_im);
+                    */
 
                     break;
                 }
                 case NT_SUBTRACT:
                 {
+                    float sum_re = true_re1 - true_re2;
+                    float sum_im = true_im1 - true_im2;
                     break;
                 }
                 case NT_MULTIPLY:
                 {
+                    float sum_re = (true_re1 * true_re2) - (true_im1 * true_im2);
+                    float sum_im = (true_re1 * true_im2) + (true_im1 * true_re2);
                     break;
                 }
                 case NT_FLOAT_DIVIDE:
                 {
+                    float sum_re = ((true_re1 * true_re2) + (true_im1 * true_im2)) / ((true_re2 * true_re2) + (true_im2 * true_im2));
+                    float sum_im = ((true_im1 * true_re2) - (true_re1 * true_im2)) / ((true_re2 * true_re2) + (true_im2 * true_im2));
                     break;
                 }
                 case NT_INTEGER_DIVIDE:
                 {
+                    float sum_re = ((true_re1 * true_re2) + (true_im1 * true_im2)) / ((true_re2 * true_re2) + (true_im2 * true_im2));
+                    float sum_im = ((true_im1 * true_re2) - (true_re1 * true_im2)) / ((true_re2 * true_re2) + (true_im2 * true_im2));
                     break;
                 }
                 default: result_cell_value = nullptr; //shouldn't get here
