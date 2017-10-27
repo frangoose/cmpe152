@@ -295,7 +295,6 @@ CellValue *ExpressionExecutor::execute_binary_operator(
     vector<ICodeNode *> children = node->get_children();
     ICodeNode *operand_node1 = children[0];
     ICodeNode *operand_node2 = children[1];
-
     // Operands.
     CellValue *cell_value1 = execute(operand_node1);
     CellValue *cell_value2 = execute(operand_node2);
@@ -309,14 +308,14 @@ CellValue *ExpressionExecutor::execute_binary_operator(
     bool integer_mode = false;
     bool character_mode = false;
     bool string_mode = false;
-    bool complex_mode = false;
+    bool complex_mode = false; //added
 
     if (   (typespec1 == Predefined::integer_type)
         && (typespec2 == Predefined::integer_type))
     {
         integer_mode = true;
     }
-
+    //added
     else if ((typespec1 == Predefined::complex_type)
           && (typespec2 == Predefined::complex_type))
     {
@@ -422,7 +421,7 @@ CellValue *ExpressionExecutor::execute_binary_operator(
                 default: result_cell_value = nullptr;  // shouldn't get here
             }
         }
-
+        //added. put as first if statement
         else if (complex_mode)
         {
             /*
@@ -485,7 +484,6 @@ CellValue *ExpressionExecutor::execute_binary_operator(
             float true_im1 = dvalue_im_1->f;
             float true_re2 = dvalue_re_2->f;
             float true_im2 = dvalue_im_2->f;
-            cout << endl << "true_re1" << true_re1 << endl;
             MemoryMapImpl *sum_map = new MemoryMapImpl; //changed to Impl
 
 

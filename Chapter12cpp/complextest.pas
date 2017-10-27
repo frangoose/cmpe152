@@ -1,22 +1,15 @@
-PROGRAM ComplexTest;
+PROGRAM test;
 
 VAR
     x, y, z : complex;
-    a, b, c : integer;
 
 BEGIN
-  x.re := 12;
-  x.im := 23;
-  y.re := 10;
-  y.im := 5;
+  x.re := 7;
+  x.im := 8;
+  y.re := 9;
+  y.im := 10;
 
   z := x + y;
-  z := x - y;
-  z := x / y;
-  z := x * y;
 
-  a := 5;
-  b := 10;
-  c := a + b;
 
 END.

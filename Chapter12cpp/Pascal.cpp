@@ -139,11 +139,12 @@ Pascal::Pascal(string operation, string file_path, string flags)
 
 Pascal::~Pascal()
 {
+  /*
     if (parser       != nullptr) delete parser;
     if (source       != nullptr) delete source;
     if (icode        != nullptr) delete icode;
     if (symtab_stack != nullptr) delete symtab_stack;
-    if (backend      != nullptr) delete backend;
+    if (backend      != nullptr) delete backend;*/
 }
 
 const string Pascal::SOURCE_LINE_FORMAT = "%03d %s\n";

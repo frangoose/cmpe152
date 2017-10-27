@@ -99,4 +99,3 @@ void Executor::process(ICode *icode, SymTabStack *symtab_stack)
 }
 
 }}} // namespace wci::backend::interpreter
-
